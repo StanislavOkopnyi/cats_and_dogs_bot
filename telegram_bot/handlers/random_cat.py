@@ -11,6 +11,6 @@ router = Router()
 @router.message(Command("random_cat"))
 async def random_cat_handler(message: Message):
     return message.answer_photo(
-        photo=get_cat_photo_url(),
-        caption=get_cat_fact()
+        photo=await get_cat_photo_url(),
+        caption=await get_cat_fact()
     )

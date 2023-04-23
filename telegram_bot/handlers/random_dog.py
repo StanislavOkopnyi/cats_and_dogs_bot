@@ -11,6 +11,6 @@ router = Router()
 @router.message(Command("random_dog"))
 async def random_dog_handler(message: Message):
     return message.answer_photo(
-        photo=get_dog_photo_url(),
-        caption=get_dog_fact()
+        photo=await get_dog_photo_url(),
+        caption=await get_dog_fact()
     )
