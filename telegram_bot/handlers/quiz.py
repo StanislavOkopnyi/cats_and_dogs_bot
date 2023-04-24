@@ -49,6 +49,13 @@ async def _answer_checker(
 async def quiz_handler(message: Message, state: FSMContext):
     await state.set_state(Questions.question1)
     await message.answer("Which human sweet treat can be fatal to dogs?")
+    await message.answer("If you want to stop quiz - /stop")
+
+
+@router.message(Command("stop"))
+async def stop_hamdler(message: Message, state: FSMContext):
+    await state.clear()
+    await message.answer("The state of the bot has been reset.")
 
 
 @router.message(Questions.question1)
@@ -88,7 +95,7 @@ async def third_question_handler(message: Message, state: FSMContext):
 async def fourth_question_handler(message: Message, state: FSMContext):
     user_answer = message.text.lower()
     await _answer_checker(user_answer,
-                          ['yorkshire terrier', 'yorkshire-terrier'],
+                          ['yorkshire terrier', 'yorkshire-terrier', "yorks"],
                           message,
                           state)
     await state.set_state(Questions.question5)
@@ -108,9 +115,3 @@ async def fifth_question_handler(message: Message, state: FSMContext):
         animation="https://c.tenor.com/jz-8XJAa4_YAAAAC/thats-all-folks.gif",
         caption=f"Congratulations! {right_answers_count}/5"
     )
-
-
-@router.message(Command("stop"))
-async def stop_hamdler(message: Message, state: FSMContext):
-    await state.clear()
-    await message.answer("The state of the bot has been reset.")
