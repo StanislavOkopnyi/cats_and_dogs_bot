@@ -14,5 +14,6 @@ async def start_handler(message: Message):
                  "There are some things this bot can do:\n"
                  "Random cat photo with fun fact - /random_cat\n"
                  "Random dog photo with fun fact - /random_dog\n"
-                 "Quiz about cats and dogs - /quiz\n")
+                 "Quiz about cats and dogs - /quiz\n"
+                 "All comands - /help\n")
     )
